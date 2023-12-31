@@ -9,28 +9,32 @@ void main() {
           child: Text('Dicee', style: TextStyle(color: Colors.white))),
       backgroundColor: Colors.red,
     ),
-    body: DicePage(),
+    body:  const DicePage(),
   )));
 }
+
 class DicePage extends StatefulWidget {
-  const DicePage({super.key});
+   const DicePage({super.key});
+
 
   @override
   State<DicePage> createState() => _DicePageState();
 }
 
 class _DicePageState extends State<DicePage> {
-  int leftDiceNumber = 5;
+  int leftDiceNumber = 1;
 
   @override
   Widget build(BuildContext context) {
-    leftDiceNumber = 5;
     return Center(
       child: Row(children: [
         Expanded(
           child: TextButton(
               onPressed: (){
-                print('Left button got pressed');
+                setState(() {
+                  leftDiceNumber = 3;
+                  print('diceNumber = $leftDiceNumber');
+                });
               },
               child: Image.asset('images/dice$leftDiceNumber.png')),
         ),
